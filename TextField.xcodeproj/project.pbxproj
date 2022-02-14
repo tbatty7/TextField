@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		221889F227BAAF270091FAB8 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221889F127BAAF270091FAB8 /* ViewControllerTests.swift */; };
+		221889F427BAB3490091FAB8 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221889F327BAB3490091FAB8 /* TestHelpers.swift */; };
 		2262B68427B6BB5700FB4680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262B68327B6BB5700FB4680 /* AppDelegate.swift */; };
 		2262B68627B6BB5700FB4680 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262B68527B6BB5700FB4680 /* SceneDelegate.swift */; };
 		2262B68827B6BB5700FB4680 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262B68727B6BB5700FB4680 /* ViewController.swift */; };
 		2262B68B27B6BB5700FB4680 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2262B68927B6BB5700FB4680 /* Main.storyboard */; };
 		2262B68D27B6BB5800FB4680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2262B68C27B6BB5800FB4680 /* Assets.xcassets */; };
 		2262B69027B6BB5800FB4680 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2262B68E27B6BB5800FB4680 /* LaunchScreen.storyboard */; };
-		2262B69B27B6BB5800FB4680 /* TextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262B69A27B6BB5800FB4680 /* TextFieldTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		221889F127BAAF270091FAB8 /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
+		221889F327BAB3490091FAB8 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		2262B68027B6BB5700FB4680 /* TextField.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextField.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2262B68327B6BB5700FB4680 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2262B68527B6BB5700FB4680 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,7 +39,6 @@
 		2262B68F27B6BB5800FB4680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2262B69127B6BB5800FB4680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2262B69627B6BB5800FB4680 /* TextFieldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextFieldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2262B69A27B6BB5800FB4680 /* TextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +94,8 @@
 		2262B69927B6BB5800FB4680 /* TextFieldTests */ = {
 			isa = PBXGroup;
 			children = (
-				2262B69A27B6BB5800FB4680 /* TextFieldTests.swift */,
+				221889F127BAAF270091FAB8 /* ViewControllerTests.swift */,
+				221889F327BAB3490091FAB8 /* TestHelpers.swift */,
 			);
 			path = TextFieldTests;
 			sourceTree = "<group>";
@@ -208,7 +211,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2262B69B27B6BB5800FB4680 /* TextFieldTests.swift in Sources */,
+				221889F227BAAF270091FAB8 /* ViewControllerTests.swift in Sources */,
+				221889F427BAB3490091FAB8 /* TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
