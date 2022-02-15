@@ -41,33 +41,43 @@ final class ViewControllerTests: XCTestCase {
     
     func test_textFieldDelegates_shouldBeConnected() {
         let viewController = setUpViewController()
+        
         XCTAssertNotNil(viewController.userNameField.delegate, "username Field")
         XCTAssertNotNil(viewController.passwordField.delegate, "password Field")
     }
     
     func test_shouldChangeCharacters_usernameWithSpaces_shouldPreventChange() {
         let viewController = setUpViewController()
-        let allowChange = viewController.userNameField.delegate?.textField?(viewController.userNameField, shouldChangeCharactersIn: NSRange(), replacementString: "a b")
+        let allowChange = shouldChangeCharacters(in: viewController.userNameField, replacement: "a b")
+        
         XCTAssertEqual(allowChange, false)
     }
     
     func test_shouldChangeCharacters_usernameWithoutSpaces_shouldAllowChange() {
         let viewController = setUpViewController()
-        let allowChange = viewController.userNameField.delegate?.textField?(viewController.userNameField, shouldChangeCharactersIn: NSRange(), replacementString: "abc")
+        let allowChange = shouldChangeCharacters(in: viewController.userNameField, replacement: "abc")
+        
         XCTAssertEqual(allowChange, true)
     }
     
     func test_shouldChangeCharacters_passwordWithSpaces_shouldAllowChange() {
         let viewController = setUpViewController()
-        let allowChange = viewController.passwordField.delegate?.textField?(viewController.passwordField, shouldChangeCharactersIn: NSRange(), replacementString: "a b")
+        let allowChange = shouldChangeCharacters(in: viewController.passwordField, replacement: "a b")
+        
         XCTAssertEqual(allowChange, true)
     }
     
     func test_shouldChangeCharacters_passwordWithoutSpaces_shouldAllowChange() {
         let viewController = setUpViewController()
-        let allowChange = viewController.passwordField.delegate?.textField?(viewController.passwordField, shouldChangeCharactersIn: NSRange(), replacementString: "abc")
+        let allowChange = shouldChangeCharacters(in: viewController.passwordField, replacement: "abc")
+        
         XCTAssertEqual(allowChange, true)
     }
+    
+    private func shouldChangeCharacters(in textfield: UITextField, range: NSRange = NSRange(), replacement: String) -> Bool? {
+        textfield.delegate?.textField?(textfield, shouldChangeCharactersIn: range, replacementString: replacement)
+    }
+    
 }
 
 
