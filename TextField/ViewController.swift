@@ -14,7 +14,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if textField === userNameField {
             return !string.contains(" ")
         }
-        
         return true
     }
     

@@ -38,4 +38,36 @@ final class ViewControllerTests: XCTestCase {
         XCTAssertEqual(textField.returnKeyType, .go, "text field return key type")
         XCTAssertTrue(textField.isSecureTextEntry, "text field isSecureTextEntry")
     }
+    
+    func test_textFieldDelegates_shouldBeConnected() {
+        let viewController = setUpViewController()
+        XCTAssertNotNil(viewController.userNameField.delegate, "username Field")
+        XCTAssertNotNil(viewController.passwordField.delegate, "password Field")
+    }
+    
+    func test_shouldChangeCharacters_usernameWithSpaces_shouldPreventChange() {
+        let viewController = setUpViewController()
+        let allowChange = viewController.userNameField.delegate?.textField?(viewController.userNameField, shouldChangeCharactersIn: NSRange(), replacementString: "a b")
+        XCTAssertEqual(allowChange, false)
+    }
+    
+    func test_shouldChangeCharacters_usernameWithoutSpaces_shouldAllowChange() {
+        let viewController = setUpViewController()
+        let allowChange = viewController.userNameField.delegate?.textField?(viewController.userNameField, shouldChangeCharactersIn: NSRange(), replacementString: "abc")
+        XCTAssertEqual(allowChange, true)
+    }
+    
+    func test_shouldChangeCharacters_passwordWithSpaces_shouldAllowChange() {
+        let viewController = setUpViewController()
+        let allowChange = viewController.passwordField.delegate?.textField?(viewController.passwordField, shouldChangeCharactersIn: NSRange(), replacementString: "a b")
+        XCTAssertEqual(allowChange, true)
+    }
+    
+    func test_shouldChangeCharacters_passwordWithoutSpaces_shouldAllowChange() {
+        let viewController = setUpViewController()
+        let allowChange = viewController.passwordField.delegate?.textField?(viewController.passwordField, shouldChangeCharactersIn: NSRange(), replacementString: "abc")
+        XCTAssertEqual(allowChange, true)
+    }
 }
+
+
