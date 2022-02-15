@@ -5,11 +5,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private(set) var userNameField: UITextField!
     @IBOutlet private(set) var passwordField: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-    
     deinit {
         print("deinit View Controller")
     }
