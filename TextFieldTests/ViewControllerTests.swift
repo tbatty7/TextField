@@ -3,14 +3,6 @@ import XCTest
 
 final class ViewControllerTests: XCTestCase {
     
-    private func setUpViewController() -> ViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController: ViewController = storyboard.instantiateViewController(identifier: String(describing: ViewController.self))
-        viewController.loadViewIfNeeded()
-        
-        return viewController
-    }
-    
     func test_outlets_shouldBeConnected() throws {
         let viewController: ViewController = setUpViewController()
         
@@ -73,11 +65,55 @@ final class ViewControllerTests: XCTestCase {
         
         XCTAssertEqual(allowChange, true)
     }
+        
+    func test_shouldReturn_withPassword_shouldPerformLogin() {
+        let viewController = setUpViewController()
+        viewController.userNameField.text = "username"
+        viewController.passwordField.text = "password"
+        
+        shouldReturn(in: viewController.passwordField)
+        
+        #warning("We could use a spy to test this if we wanted to")
+    }
+    
+    func test_shouldReturn_WithUsername_shouldMoveInputFocusToPassword() {
+        let viewController = setUpViewController()
+        putInViewHeirarchy(viewController)
+        
+        shouldReturn(in: viewController.userNameField)
+        
+        XCTAssertTrue(viewController.passwordField.isFirstResponder)
+    }
+    
+    func test_shouldReturn_withPassword_shouldDismissKeyboard() {
+        let viewController = setUpViewController()
+        putInViewHeirarchy(viewController)
+        viewController.passwordField.becomeFirstResponder()
+        XCTAssertTrue(viewController.passwordField.isFirstResponder, "precondition")
+        
+        shouldReturn(in: viewController.passwordField)
+        
+        XCTAssertFalse(viewController.passwordField.isFirstResponder)
+    }
+    
+    private func setUpViewController() -> ViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController: ViewController = storyboard.instantiateViewController(identifier: String(describing: ViewController.self))
+        viewController.loadViewIfNeeded()
+        
+        return viewController
+    }
     
     private func shouldChangeCharacters(in textfield: UITextField, range: NSRange = NSRange(), replacement: String) -> Bool? {
         textfield.delegate?.textField?(textfield, shouldChangeCharactersIn: range, replacementString: replacement)
     }
     
+    @discardableResult private func shouldReturn(in textField: UITextField) -> Bool? {
+        textField.delegate?.textFieldShouldReturn?(textField)
+    }
+    
+    func putInViewHeirarchy(_ viewController: UIViewController) {
+        let window = UIWindow()
+        window.addSubview(viewController.view)
+    }
 }
-
-

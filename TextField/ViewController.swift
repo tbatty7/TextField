@@ -10,6 +10,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
     
+    deinit {
+        print("deinit View Controller")
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField === userNameField {
             return !string.contains(" ")
